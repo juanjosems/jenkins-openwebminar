@@ -21,8 +21,10 @@ pipeline {
     }
     stage('Push registry') {
       steps {
-        sh 'docker tag app:test juanjosems/app:stable'
-        sh 'docker push juanjosems/app:stable'
+          withCredentials([usernamePassword(credentialsId: 'docker', passwordVariable: 'password', usernameVariable: 'user')]) {
+              sh 'docker tag app:test juanjosems/app:stable'
+              sh 'docker push juanjosems/app:stable'
+          }
       }
     }
   }
