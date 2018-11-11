@@ -16,7 +16,7 @@ pipeline {
     stage('Push registry') {
       steps {
         sh 'docker tag app:test app:stable'
-        sh 'docker push juanjosems@gmail.com/app:test'
+        sh 'docker push juanjosems/app:test'
       }
     }
   }
